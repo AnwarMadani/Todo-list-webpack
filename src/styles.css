@@ -1,0 +1,219 @@
+*,
+*::before,
+*::after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 100px auto;
+}
+
+header{
+    background-color: #111827;
+    color: #eaeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border-bottom: 1px solid #eaeeee;;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr;
+}
+
+.sidebar{
+    border-right: 1px solid #eaeeee;
+    padding: 1rem;
+    background-color: #111827;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    color: #eaeeee;
+}
+
+.sidebar h2{
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+.center{
+    background-color: #2b3544;
+}
+
+.task-inbox{
+    width: 100%;
+}
+
+.task-inbox button{
+    border: none;
+    font-size: 1.2rem;
+    width: 80%;
+    border-radius: .5rem;
+    cursor: pointer;
+    margin: .5rem;
+    border: 1px solid #eaeeee;;
+    color: #eaeeee;
+    background-color: #2b3544;
+}
+
+.task-inbox button:hover,
+.task-inbox button.active{
+    background-color: #485870;
+}
+
+.addProject{
+    border: none;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    margin: .7rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    background-color: #0f766e;
+    color: #e2eedd;
+}
+
+.addProject:hover{
+    background-color: #0b4d47;
+}
+
+.modal{
+    text-align: center;
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f4f5f6;
+    color: black;
+    border: 1px solid black;
+    height: 500px;
+    width: 500px;
+    font-size: 1.3rem;
+    border-radius: .5rem;
+    display: none;
+}
+
+
+.modal.active{
+    display: block;
+}
+
+.modal .form{
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form > div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+}
+
+
+.form #title,
+.form button{
+    width: 80%;
+    padding: .5rem;
+    border-radius: .5rem;
+    border: 1px solid black;
+}
+
+.form #dueDate{
+    padding: .5rem;
+    border-radius: .5rem;
+    border: 1px solid black;
+}
+
+.priority-level{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.priority-level label{
+    margin-right: 2rem;
+}
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.overlay.active{
+    display: block;
+}
+
+
+.form button,
+.form input[type="radio"],
+.form input[type="date"]{
+    cursor: pointer;
+}
+
+.form button{
+    font-size: 1.2rem;
+}
+
+.center{
+    padding: 1rem;
+}
+
+.center > div{
+    margin: .5rem;
+    background-color: white;
+    width: 100%;
+    padding: .5rem;
+    border-radius: .5rem;
+}
+
+
+.center .first{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task.low{
+    background-color: rgb(59, 165, 59);
+}
+
+.task.high{
+    background-color: rgb(163, 45, 45);
+}
+
+.first > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.first > div img{
+    height: 1.5rem;
+    width: 1.5rem;
+    cursor: pointer;
+}
