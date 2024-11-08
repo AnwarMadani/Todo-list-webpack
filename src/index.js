@@ -1,7 +1,3 @@
-import "./styles.css";
-import deleteImage from './img/delete.png';
-import Task from "./modules/task";
-
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -32,6 +28,25 @@ function closeModal(){
     overlay.classList.remove('active');
 }
 
+
+class Task {
+    constructor(title, dueDate, priority, description=''){
+        this.title = title,
+        this.description = description;
+        this.dueDate = dueDate;
+        this.priority = priority;
+    }
+    
+    getName() {
+        return this.name
+    }
+    
+    
+    getDate() {
+        return this.dueDate
+    }
+
+}
 
 function addTaskToTasks(newTask){
     if(!myTasks.includes(newTask)){
@@ -76,7 +91,7 @@ function createTaskCard(task){
         const taskDiv = document.createElement('div');
         const leftSideDiv = document.createElement('div');
         const deleteIcon = document.createElement('img');
-        deleteIcon.src = deleteImage;
+        deleteIcon.src = './img/delete.png';
         taskDiv.classList.add('task');
         const taskTitle = document.createElement('h3');
         taskTitle.textContent = task.title;
@@ -122,17 +137,14 @@ function addTask(e){
 }
 
 
+// Inbox Button
+
 const inboxBtn = document.getElementById('inbox');
 const todayBtn = document.getElementById('today');
 let todayTasks = [];
 
-inboxBtn.addEventListener('click', (e) =>{
-    updateTasksContainer(myTasks)
-    todayProjectsBtn.classList.add('active');
-    inboxProjectsBtn.classList.remove('active');
-});
-const todayProjectsBtn = document.getElementById('today');
-const inboxProjectsBtn = document.getElementById('inbox');
+inboxBtn.addEventListener('click', (e) => updateTasksContainer(myTasks));
+
 todayBtn.addEventListener('click', (e) => {
     todayTasks = [];
     myTasks.filter((task) => {
@@ -142,8 +154,5 @@ todayBtn.addEventListener('click', (e) => {
             }
         }});
     updateTasksContainer(todayTasks);
-    todayProjectsBtn.classList.add('active');
-    inboxProjectsBtn.classList.remove('active');
-
 });
 
