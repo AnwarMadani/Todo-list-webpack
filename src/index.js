@@ -1,3 +1,7 @@
+import "./styles.css";
+import deleteImage from './img/delete.png';
+import Task from "./modules/task";
+
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -28,25 +32,6 @@ function closeModal(){
     overlay.classList.remove('active');
 }
 
-
-class Task {
-    constructor(title, dueDate, priority, description=''){
-        this.title = title,
-        this.description = description;
-        this.dueDate = dueDate;
-        this.priority = priority;
-    }
-    
-    getName() {
-        return this.name
-    }
-    
-    
-    getDate() {
-        return this.dueDate
-    }
-
-}
 
 function addTaskToTasks(newTask){
     if(!myTasks.includes(newTask)){
@@ -91,7 +76,7 @@ function createTaskCard(task){
         const taskDiv = document.createElement('div');
         const leftSideDiv = document.createElement('div');
         const deleteIcon = document.createElement('img');
-        deleteIcon.src = './img/delete.png';
+        deleteIcon.src = deleteImage;
         taskDiv.classList.add('task');
         const taskTitle = document.createElement('h3');
         taskTitle.textContent = task.title;
@@ -143,7 +128,11 @@ const inboxBtn = document.getElementById('inbox');
 const todayBtn = document.getElementById('today');
 let todayTasks = [];
 
-inboxBtn.addEventListener('click', (e) => updateTasksContainer(myTasks));
+inboxBtn.addEventListener('click', (e) => {
+    updateTasksContainer(myTasks);
+    inboxBtn.classList.add('active');
+    todayBtn.classList.remove('active');
+});
 
 todayBtn.addEventListener('click', (e) => {
     todayTasks = [];
@@ -154,5 +143,7 @@ todayBtn.addEventListener('click', (e) => {
             }
         }});
     updateTasksContainer(todayTasks);
+    inboxBtn.classList.remove('active');
+    todayBtn.classList.add('active');
 });
 
